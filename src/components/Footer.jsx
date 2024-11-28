@@ -23,7 +23,7 @@ const Footer = () => {
           <li onClick={setReset}><Link to="/about">About</Link></li>
           <li onClick={setReset}><Link to="/contact">Contact</Link></li>
         </ul>
-        <p className="credit">&copy; 2024 Exclusivefab. All rights reserved.</p>
+        <p className="credit">&copy; 2024 Naijaleakhub. All rights reserved.</p>
       </div>
     </footer>
   );

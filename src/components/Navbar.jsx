@@ -8,7 +8,6 @@ function Navbar() {
   
   const [showSearch, setShowSearch] =useState(false);
   const [isActive, setIsActive] = useState(false);
-  //add the active class
   const toggleActiveClass = () => { 
     setIsActive(!isActive);
   };
@@ -41,7 +40,7 @@ function Navbar() {
 )}
 
           {/* logo */}
-          <Link to='/'onClick={removeActive} className={`${styles.logo}`}>Exclusivefab</Link>
+          <Link to='/'onClick={removeActive} className={`${styles.logo}`}>Naijaleakhub</Link>
           <ul className={`${styles.navMenu} ${isActive ? styles.active : ''}`}>
             <li onClick={removeActive}>
               <Link to='/' className={`${styles.navLink}`}>Home</Link>
@@ -50,10 +49,10 @@ function Navbar() {
               <Link to='/teen' className={`${styles.navLink}`}>Teen</Link>
             </li>
             <li onClick={removeActive}>
-              <Link to='/blowjob' className={`${styles.navLink}`}>Blowjob</Link>
+              <Link to='/lesbian' className={`${styles.navLink}`}>Lesbian</Link>
             </li>
             <li onClick={removeActive}>
-              <Link to='/lesbian' className={`${styles.navLink}`}>Lesbian</Link>
+              <Link to='/blowjob' className={`${styles.navLink}`}>Blowjob</Link>
             </li>
             <li onClick={removeActive}>
               <Link to='/celebrities' className={`${styles.navLink}`}>Celebrities</Link>

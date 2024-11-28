@@ -82,7 +82,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/video/:videoID',
+    path: '/video/:slug',
     element: (
       <>
         <Navbar />

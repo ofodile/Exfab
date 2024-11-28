@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 import client from '../contentfulClient';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -10,7 +10,8 @@ import Ad4 from '../Ads/Ad4'
 
 
 const VideoPage = () => {
-  const { videoID } = useParams();
+  const { slug } = useParams();
+  const location = useLocation();
   const [videoData, setVideoData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [entriesLoading, setEntriesLoading] = useState(true); // Separate loading state for related posts
@@ -34,23 +35,28 @@ const VideoPage = () => {
     setEntries(cleanData);
   }, []);
 
-  useEffect(() => {
+    useEffect(() => {
     const fetchVideo = async () => {
       setLoading(true);
-      setError(null);
       try {
-        const response = await client.getEntry(videoID);
-        setVideoData(response);
+        const videoId = location.state?.id; // Retrieve the ID from state
+        if (videoId) {
+          const response = await client.getEntry(videoId);
+          setVideoData(response);
+        } else {
+          console.error('No ID provided.');
+        }
       } catch (error) {
-        setError(error);
+        console.error(error);
       } finally {
         setLoading(false);
       }
     };
 
     fetchVideo();
-  }, [videoID]);
-
+  }, [location.state]);
+  
+  
   useEffect(() => {
     const fetchData = async () => {
       if (!videoData?.fields?.tag) return;

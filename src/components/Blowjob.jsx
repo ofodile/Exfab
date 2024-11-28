@@ -4,17 +4,17 @@ import client from '../contentfulClient';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import '../css/category.css';
-import Ad1 from '../Ads/Ad1'
-import Ad2 from '../Ads/Ad2'
+import Ad1 from '../Ads/Ad1';
+import Ad2 from '../Ads/Ad2';
 
-
+const formatSlug = (title) => title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
 
 const Blowjob = () => {
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1); // Track current page
-  const [totalEntries, setTotalEntries] = useState(0); 
-  const postsPerPage = 40;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalEntries, setTotalEntries] = useState(0);
+  const postsPerPage = 36;
 
   const cleanUpData = useCallback((rawData) => {
     const cleanData = rawData.map((data) => {
@@ -22,7 +22,7 @@ const Blowjob = () => {
       const { id } = sys;
       const videoTitle = fields.title;
       const tag = fields.tag;
-      const image = fields.image?.fields?.file?.url || null; 
+      const image = fields.image?.fields?.file?.url || null;
       const video = fields.video?.fields?.file?.url || null;
 
       return { id, videoTitle, tag, image, video };
@@ -33,7 +33,7 @@ const Blowjob = () => {
 
   const fetchData = useCallback(async () => {
     setLoading(true);
-    const skip = (currentPage - 1) * postsPerPage; // Calculate `skip` for pagination
+    const skip = (currentPage - 1) * postsPerPage;
     try {
       const response = await client.getEntries({
         'fields.tag': 'Blowjob',
@@ -42,7 +42,7 @@ const Blowjob = () => {
         skip: skip,
       });
       const responseData = response.items;
-      const total = response.total; // Total number of entries in Contentful
+      const total = response.total;
       setTotalEntries(total);
 
       if (responseData) {
@@ -76,10 +76,9 @@ const Blowjob = () => {
   };
 
   if (loading) {
-    // Skeleton layout for loading
     return (
       <div className="skeleton-container">
-        {Array.from({ length: 40 }).map((_, index) => (
+        {Array.from({ length: 36 }).map((_, index) => (
           <div key={index} className="home-skeleton">
             <Skeleton className="thumbnail-skeleton" />
             <Skeleton className="text-skeleton" />
@@ -91,22 +90,26 @@ const Blowjob = () => {
   }
 
   if (!entries.length) return <p>No entries found.</p>;
+
   const handleLinkClick = () => {
     window.scrollTo({ top: 0, behavior: 'auto' });
-  }
-  
+  };
 
   return (
-  <>
-    <div className="ads">
-       <div className="ad1"><Ad1 /></div>
-       <div className="ad2"><Ad2 /></div>
-    </div>
-    <h2 className="cate-h2">Blowjob Category</h2>
-    <div className="container">
+    <>
+      <div className="ads">
+        <div className="ad1"><Ad1 /></div>
+        <div className="ad2"><Ad2 /></div>
+      </div>
+      <h2 className="cate-h2">Blowjob Category</h2>
+      <div className="container">
         {entries.map((item) => (
           <div key={item.id} className="item">
-            <Link to={`/video/${item.id}`} onClick={handleLinkClick}>
+            <Link
+              to={`/video/${formatSlug(item.videoTitle)}`}
+              state={{ id: item.id }} // Pass the ID as state
+              onClick={handleLinkClick}
+            >
               <img
                 src={`https:${item.image}`}
                 alt={item.videoTitle}
@@ -116,17 +119,13 @@ const Blowjob = () => {
             </Link>
           </div>
         ))}
-   </div>
-   <div className="pagination">
-        <button onClick={handlePrevious} 
-        className="btn"
-        disabled={currentPage === 1}>
+      </div>
+      <div className="pagination">
+        <button onClick={handlePrevious} className="btn" disabled={currentPage === 1}>
           Back
         </button>
-        <p className="page">
-          Page {currentPage}
-        </p>
-        <button 
+        <p className="page">Page {currentPage}</p>
+        <button
           className="btn"
           onClick={handleNext}
           disabled={currentPage === Math.ceil(totalEntries / postsPerPage)}
@@ -134,7 +133,7 @@ const Blowjob = () => {
           Next
         </button>
       </div>
-   </>
+    </>
   );
 };
 

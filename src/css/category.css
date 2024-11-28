@@ -1,5 +1,7 @@
 .ads{
   margin: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .ad1{
@@ -12,6 +14,8 @@
   justify-content: space-between;
   gap: 20px; 
   margin-top: 0;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .container > div {
@@ -65,10 +69,6 @@
   margin: 5px;
   padding-left: 0;
   margin-left: 0;
-}
-
-.container .item:first-child .thumbnail {
-  margin-top: 0;
 }
 
 
@@ -193,6 +193,8 @@
   .container {
     flex-direction: column;
     margin: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   .container > div {
@@ -219,4 +221,7 @@
     height: 180px;
     margin-top: 50px;
   }
+  .container .item:first-child .thumbnail {
+  margin-top: 0;
+}
 }

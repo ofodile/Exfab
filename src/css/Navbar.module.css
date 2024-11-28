@@ -47,9 +47,9 @@
   
   /* logo  */
   .logo {
-    font-size: 25px;
+    font-size: 22px;
     font-weight: bold;
-    font-family: "Alice", serif;
+    font-family: "Montserrat", serif;
     padding: 10px;
     padding-bottom: 16.50px;
   }
@@ -63,7 +63,7 @@
   }
   
   .navLink{
-    font-family: "Alice", serif;
+    font-family: "Montserrat", serif;
     font-size: 20px;
   }
 
