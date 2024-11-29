@@ -7,6 +7,8 @@ import Ad1 from '../Ads/Ad1'
 import Ad2 from '../Ads/Ad2'
 import Ad3 from '../Ads/Ad3'
 import Ad4 from '../Ads/Ad4'
+import NativeAd from '../Ads/NativeAd'
+
 
 
 const VideoPage = () => {
@@ -142,8 +144,15 @@ const VideoPage = () => {
         <div className="ad3"><Ad4 /></div>
       </div>
       <div className="flex-2">
-         <div className="ad3"><div data-banner-id="6036357"></div></div>
-         <div className="ad3"><div data-banner-id="6036358"></div></div>
+         <div className="ad3">
+            <NativeAd />
+         </div>
+         <div className="ad3">
+            <div data-banner-id="6036357"></div>
+         </div>
+         <div className="ad3">
+            <div data-banner-id="6036358"></div>
+         </div>
       </div>
     </div>
     </>

@@ -14,6 +14,7 @@ import Celebrities from './components/Celebrities';
 import Home from './pages/Home';
 import VideoPage from './pages/VideoPage';
 import SearchResult from './components/SearchResult';
+import NotFound from './components/NotFound';
 import "./css/Video.css";
 import "./App.css";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
@@ -91,12 +92,22 @@ const router = createBrowserRouter([
       </>
     ),
   },
-    {
+  {
     path: '/searchresult',
     element: (
       <>
         <Navbar />
         <SearchResult />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: '*',
+    element: (
+      <>
+        <Navbar />
+        <NotFound />
         <Footer />
       </>
     ),

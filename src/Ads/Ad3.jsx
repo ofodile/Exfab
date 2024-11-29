@@ -1,39 +1,41 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from "react";
 
 const Ad3 = () => {
-  const adContainerRef = useRef(null);
-
   useEffect(() => {
-    // Set up the atAsyncOptions
-    if (typeof window.atAsyncOptions !== 'object') window.atAsyncOptions = [];
+    // Check if atAsyncOptions exists and initialize if not
+    if (typeof window.atAsyncOptions !== "object") {
+      window.atAsyncOptions = [];
+    }
+
+    // Push ad options to atAsyncOptions
     window.atAsyncOptions.push({
-      'key': 'a88fae2002dfff7e2ea23a92a9b65b2f',
-      'format': 'js',
-      'async': true,
-      'container': 'atContainer-a88fae2002dfff7e2ea23a92a9b65b2f',
-      'params': {}
+      key: "d133bb74300857cd99679135032291c7",
+      format: "js",
+      async: true,
+      container: "atContainer-d133bb74300857cd99679135032291c7",
+      params: {}
     });
 
-    // Create the script element
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
+    // Dynamically create and append the script
+    const script = document.createElement("script");
+    script.type = "text/javascript";
     script.async = true;
-    script.src = 'http' + (location.protocol === 'https:' ? 's' : '') + '://stoolsymphony.com/a88fae2002dfff7e2ea23a92a9b65b2f/invoke.js';
-
-    // Append the script to the head
+    script.src =
+      "http" +
+      (location.protocol === "https:" ? "s" : "") +
+      "://stoolsymphony.com/d133bb74300857cd99679135032291c7/invoke.js";
     document.head.appendChild(script);
 
+    // Cleanup: Remove the script if the component unmounts
     return () => {
-      // Cleanup script
-      document.head.removeChild(script);
+      const container = document.getElementById(
+        "atContainer-d133bb74300857cd99679135032291c7"
+      );
+      if (container) container.innerHTML = "";
     };
   }, []);
 
-  return (
-    <div id="atContainer-a88fae2002dfff7e2ea23a92a9b65b2f" ref={adContainerRef}>
-      {/* The ad will be displayed inside this div */}
-    </div>
-  );
+  return <div id="atContainer-d133bb74300857cd99679135032291c7"></div>;
 };
 
 export default Ad3;

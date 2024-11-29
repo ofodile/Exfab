@@ -1,35 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
 const Ad4 = () => {
   useEffect(() => {
-    if (typeof window.atAsyncOptions !== 'object') {
+    // Ensure atAsyncOptions is globally defined
+    if (typeof window.atAsyncOptions !== "object") {
       window.atAsyncOptions = [];
     }
+
+    // Add the ad configuration
     window.atAsyncOptions.push({
-      'key': '12569846fdf8319b5e5109150bc65306',
-      'format': 'js',
-      'async': true,
-      'container': 'atContainer-12569846fdf8319b5e5109150bc65306',
-      'params': {}
+      key: "44631af3ec891a5641d8edf6bb43e855",
+      format: "js",
+      async: true,
+      container: "atContainer-44631af3ec891a5641d8edf6bb43e855",
+      params: {}
     });
 
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
+    // Dynamically create and append the script
+    const script = document.createElement("script");
+    script.type = "text/javascript";
     script.async = true;
-    script.src = 'http' + (location.protocol === 'https:' ? 's' : '') + '://stoolsymphony.com/12569846fdf8319b5e5109150bc65306/invoke.js';
+    script.src =
+      "http" +
+      (location.protocol === "https:" ? "s" : "") +
+      "://stoolsymphony.com/44631af3ec891a5641d8edf6bb43e855/invoke.js";
     document.head.appendChild(script);
 
+    // Cleanup on component unmount
     return () => {
-      // Cleanup: remove the script from the document head
-      document.head.removeChild(script);
+      const container = document.getElementById(
+        "atContainer-44631af3ec891a5641d8edf6bb43e855"
+      );
+      if (container) container.innerHTML = "";
     };
   }, []);
 
-  return (
-    <div id="atContainer-12569846fdf8319b5e5109150bc65306">
-      {/* The ad will be displayed inside this div */}
-    </div>
-  );
+  return <div id="atContainer-44631af3ec891a5641d8edf6bb43e855"></div>;
 };
 
 export default Ad4;

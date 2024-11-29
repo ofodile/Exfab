@@ -1,0 +1,41 @@
+.NotFound{
+  text-align: center;
+  height: 100vh;
+  font-family: "Montserrat", serif;
+}
+
+.NotFound-heading{
+  margin: 10px;
+  margin-top: 40px;
+  font-size: 50px;
+}
+
+.NotFound-text{
+  margin-top: 30px;
+  margin-bottom: 50px;
+  font-size: 30px;
+}
+
+.NotFound-btn{
+  color: white;
+  background: #054d5b;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  
+  .NotFound-heading{
+    font-size: 30px;
+  }
+  
+  .NotFound-text{
+     font-size: 20px;
+     margin-top: 30px;
+     margin-bottom: 50px;
+     margin-left: 10px;
+     margin-right: 10px;
+  }
+}

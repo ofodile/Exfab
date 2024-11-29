@@ -1,39 +1,41 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from "react";
 
 const Ad2 = () => {
-  const adContainerRef = useRef(null);
-
   useEffect(() => {
-    // Ensure atAsyncOptions is set up correctly
-    if (typeof window.atAsyncOptions !== 'object') {
+    // Ensure atAsyncOptions exists globally
+    if (typeof window.atAsyncOptions !== "object") {
       window.atAsyncOptions = [];
     }
+
+    // Add the new ad configuration
     window.atAsyncOptions.push({
-      'key': '0499034a97b1818c7f41f1a43916fa8a',
-      'format': 'js',
-      'async': true,
-      'container': 'atContainer-0499034a97b1818c7f41f1a43916fa8a',
-      'params': {}
+      key: "b1ebdf03ddb022ff5785371e2f93fe1e",
+      format: "js",
+      async: true,
+      container: "atContainer-b1ebdf03ddb022ff5785371e2f93fe1e",
+      params: {}
     });
 
-    // Create and insert the script element
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
+    // Dynamically load the script
+    const script = document.createElement("script");
+    script.type = "text/javascript";
     script.async = true;
-    script.src = 'http' + (location.protocol === 'https:' ? 's' : '') + '://stoolsymphony.com/0499034a97b1818c7f41f1a43916fa8a/invoke.js';
+    script.src =
+      "http" +
+      (location.protocol === "https:" ? "s" : "") +
+      "://stoolsymphony.com/b1ebdf03ddb022ff5785371e2f93fe1e/invoke.js";
     document.head.appendChild(script);
 
+    // Cleanup on component unmount
     return () => {
-      // Cleanup: remove the script from the document head
-      document.head.removeChild(script);
+      const container = document.getElementById(
+        "atContainer-b1ebdf03ddb022ff5785371e2f93fe1e"
+      );
+      if (container) container.innerHTML = "";
     };
   }, []);
 
-  return (
-    <div id="atContainer-0499034a97b1818c7f41f1a43916fa8a" ref={adContainerRef}>
-      {/* The ad will be displayed inside this div */}
-    </div>
-  );
+  return <div id="atContainer-b1ebdf03ddb022ff5785371e2f93fe1e"></div>;
 };
 
 export default Ad2;
