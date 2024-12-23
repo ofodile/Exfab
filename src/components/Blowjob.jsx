@@ -91,9 +91,6 @@ const Blowjob = () => {
 
   if (!entries.length) return <p>No entries found.</p>;
 
-  const handleLinkClick = () => {
-    window.scrollTo({ top: 0, behavior: 'auto' });
-  };
 
   return (
     <>
@@ -108,7 +105,6 @@ const Blowjob = () => {
             <Link
               to={`/video/${formatSlug(item.videoTitle)}`}
               state={{ id: item.id }} // Pass the ID as state
-              onClick={handleLinkClick}
             >
               <img
                 src={`https:${item.image}`}

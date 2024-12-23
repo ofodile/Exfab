@@ -13,6 +13,11 @@ import EvadavAds from '../Ads/EvadavAds'
 
 
 const VideoPage = () => {
+  useEffect(() => {
+    // Scroll to the top of the page
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, []); 
+  
   const { slug } = useParams();
   const location = useLocation();
   const [videoData, setVideoData] = useState(null);

@@ -116,11 +116,11 @@ const router = createBrowserRouter([
 
 const App = () => {
   return (
-    <SkeletonTheme baseColor="#D3D3D3" highlightColor="white">
+     <SkeletonTheme baseColor="#D3D3D3" highlightColor="white">
       <RouterProvider router={router}>
         <ScrollRestoration />
       </RouterProvider>
-    </SkeletonTheme>
+     </SkeletonTheme>
   );
 };
 
